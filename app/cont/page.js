@@ -1,54 +1,89 @@
-import { redirect } from "next/navigation";
+import Link from "next/link";
 import { createClient } from "../../lib/supabase/server";
-import LogoutButton from "./LogoutButton";
 
-// Componentă server: citește utilizatorul din sesiune.
-export default async function Cont() {
+function dataRo(x) {
+  if (!x) return "—";
+  return new Intl.DateTimeFormat("ro-RO", { day: "numeric", month: "long", year: "numeric" }).format(new Date(x));
+}
+
+export default async function ContAcasa() {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
 
-  // dacă nu ești autentificat, te trimite la login
-  if (!user) {
-    redirect("/login");
-  }
+  // cel mai recent abonament al utilizatorului
+  const { data: sub } = await supabase
+    .from("subscriptions")
+    .select("plan_name, status, current_period_end")
+    .eq("user_id", user.id)
+    .order("created_at", { ascending: false })
+    .limit(1)
+    .maybeSingle();
 
-  // ia profilul (numele, telefonul, rolul)
-  const { data: profile } = await supabase
-    .from("profiles")
-    .select("full_name, phone, role")
-    .eq("id", user.id)
-    .single();
-
-  const nume = (profile && profile.full_name) || user.email;
-  const rowStyle = { display: "flex", flexDirection: "column", gap: "2px", padding: "12px 0", borderBottom: "1px solid var(--line)" };
-  const kStyle = { fontSize: "12px", letterSpacing: ".06em", textTransform: "uppercase", color: "var(--muted)" };
+  const activ = sub && sub.status === "active";
+  const inAsteptare = sub && sub.status === "pending";
 
   return (
-    <div className="auth-wrap" style={{ maxWidth: "560px" }}>
-      <div className="auth-card glass sweep">
-        <span className="eyebrow">Contul meu</span>
-        <h1 style={{ fontSize: "32px" }}>Bine ai revenit, {nume}.</h1>
-        <p className="sub">Ești autentificat. Aici va fi dashboard-ul tău — abonament, cod de acces și plăți. Îl construim în pașii următori.</p>
+    <>
+      <h1 className="dash-h1">Bun venit înapoi.</h1>
 
-        <div style={{ marginTop: "20px" }}>
-          <div style={rowStyle}>
-            <span style={kStyle}>Email</span>
-            <span className="fd" style={{ fontSize: "16px" }}>{user.email}</span>
-          </div>
-          <div style={rowStyle}>
-            <span style={kStyle}>Telefon</span>
-            <span className="fd" style={{ fontSize: "16px" }}>{(profile && profile.phone) || "—"}</span>
-          </div>
-          <div style={{ ...rowStyle, borderBottom: "none" }}>
-            <span style={kStyle}>Rol</span>
-            <span className="fd" style={{ fontSize: "16px" }}>{(profile && profile.role) || "member"}</span>
-          </div>
+      {/* CARD ABONAMENT */}
+      <div className="dash-card glass sweep">
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "12px", flexWrap: "wrap" }}>
+          <h3>Abonamentul tău</h3>
+          {activ
+            ? <span className="badge-status activ"><span className="d"></span>Activ</span>
+            : inAsteptare
+              ? <span className="badge-status asteptare"><span className="d"></span>În așteptare</span>
+              : <span className="badge-status inactiv"><span className="d"></span>Fără abonament</span>}
         </div>
 
-        <div style={{ marginTop: "22px" }}>
-          <LogoutButton />
+        {activ ? (
+          <div style={{ marginTop: "14px" }}>
+            <div className="fd" style={{ fontSize: "24px" }}>{sub.plan_name}</div>
+            <p className="muted" style={{ marginTop: "6px", fontSize: "14px" }}>Valabil până la {dataRo(sub.current_period_end)}.</p>
+          </div>
+        ) : inAsteptare ? (
+          <div className="empty" style={{ marginTop: "14px" }}>
+            <p className="muted" style={{ fontSize: "15px" }}>
+              Ai ales <b style={{ color: "var(--ink)" }}>{sub.plan_name}</b>. Achită la recepție ca să-ți activăm accesul — un coleg confirmă plata și primești codul QR.
+            </p>
+          </div>
+        ) : (
+          <div className="empty" style={{ marginTop: "14px" }}>
+            <p className="muted" style={{ fontSize: "15px" }}>
+              Nu ai un abonament activ. Alege unul ca să primești codul de acces și să intri în sală non-stop.
+            </p>
+            <Link href="/abonamente" className="btn btn-primary magnetic">Alege abonament</Link>
+          </div>
+        )}
+      </div>
+
+      {/* CARD COD ACCES */}
+      <div className="dash-card glass">
+        <h3>Cod de acces</h3>
+        <div className="qr-locked" style={{ marginTop: "14px" }}>
+          <svg viewBox="0 0 24 24" style={{ width: "30px", height: "30px", stroke: "var(--muted)", fill: "none", strokeWidth: 1.6 }}>
+            <rect x="4" y="10" width="16" height="11" rx="2" /><path d="M8 10V7a4 4 0 0 1 8 0v3" />
+          </svg>
+          <p className="muted" style={{ fontSize: "14px", maxWidth: "320px" }}>
+            {activ
+              ? "Codul QR dinamic de acces 24/7 se activează în pasul „Acces 24/7”. Revino curând."
+              : "Codul de acces apare aici după ce ai un abonament activ."}
+          </p>
         </div>
       </div>
-    </div>
+
+      {/* STATISTICI RAPIDE */}
+      <div className="dash-stats">
+        <div className="dash-card glass dash-stat">
+          <div className="v">—</div>
+          <div className="k">Intrări luna asta · în curând</div>
+        </div>
+        <div className="dash-card glass dash-stat">
+          <div className="v">{activ ? dataRo(sub.current_period_end) : "—"}</div>
+          <div className="k">Următoarea reînnoire</div>
+        </div>
+      </div>
+    </>
   );
 }

@@ -1,13 +1,20 @@
 import "./globals.css";
 import Link from "next/link";
 import SiteEffects from "./SiteEffects"; // componenta care „dă viață"
+import NavAuth from "./NavAuth"; // butoanele de cont (logat / nelogat)
+import { createClient } from "../lib/supabase/server";
 
 export const metadata = {
   title: "Aer SportClub — Târgu Neamț · Non-stop",
   description: "O altfel de sală de fitness. Acces non-stop, 24/7, în Târgu Neamț.",
 };
 
-export default function RootLayout({ children }) {
+// Componentă server (async): citește din sesiune dacă ești logat.
+export default async function RootLayout({ children }) {
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+  const isLoggedIn = !!user;
+
   return (
     <html lang="ro">
       <body>
@@ -37,9 +44,7 @@ export default function RootLayout({ children }) {
             </div>
 
             <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-              <Link href="/login" className="btn btn-ghost magnetic" style={{ padding: "10px 18px" }}>
-                Intră în cont
-              </Link>
+              <NavAuth isLoggedIn={isLoggedIn} />
               <button id="hamb" className="hamb" aria-label="Meniu">
                 <span></span><span></span><span></span>
               </button>
@@ -52,7 +57,9 @@ export default function RootLayout({ children }) {
           <Link href="/sala">Sala</Link>
           <Link href="/abonamente">Abonamente</Link>
           <Link href="/contact">Contact</Link>
-          <Link href="/login">Intră în cont</Link>
+          {isLoggedIn
+            ? <Link href="/cont">Contul meu</Link>
+            : <Link href="/login">Intră în cont</Link>}
         </div>
 
         {/* Conținutul fiecărei pagini */}
@@ -77,13 +84,8 @@ export default function RootLayout({ children }) {
               <b style={{ color: "var(--ink)" }}>Deschis 24/7</b>
             </div>
           </div>
-          <div className="wrap" style={{ marginTop: "34px" }}>
-            <div style={{ display: "flex", gap: "18px", flexWrap: "wrap", marginBottom: "10px" }}>
-              <Link href="/termeni" className="muted" style={{ fontSize: "12px" }}>Termeni și condiții</Link>
-              <Link href="/confidentialitate" className="muted" style={{ fontSize: "12px" }}>Confidențialitate</Link>
-              <Link href="/cookies" className="muted" style={{ fontSize: "12px" }}>Cookies</Link>
-            </div>
-            <p className="muted" style={{ fontSize: "12px" }}>© 2026 Aer SportClub · Târgu Neamț</p>
+          <div className="wrap">
+            <p className="muted" style={{ fontSize: "12px", marginTop: "34px" }}>© 2026 Aer SportClub · Târgu Neamț</p>
           </div>
         </footer>
       </body>
