@@ -41,7 +41,7 @@ export default function AdminNav() {
       <Soon icon={Ic.card}>Abonamente</Soon>
       <Soon icon={Ic.receipt}>Plăți & facturi</Soon>
       <Soon icon={Ic.scan}>Acces & intrări</Soon>
-      <Soon icon={Ic.dumbbell}>Ghid aparate</Soon>
+      <Item href="/admin/exercitii" icon={Ic.dumbbell}>Ghid exerciții</Item>
       <Soon icon={Ic.staff}>Personal</Soon>
       <Soon icon={Ic.cog}>Setări sală</Soon>
       <Item href="/cont" icon={Ic.back}>Zona mea</Item>

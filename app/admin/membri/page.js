@@ -1,6 +1,7 @@
 "use client"; // listă interactivă (căutare + filtre)
 
 import { useEffect, useMemo, useState } from "react";
+import Link from "next/link";
 import { createClient } from "../../../lib/supabase/client";
 
 function dataRo(x) {
@@ -75,7 +76,7 @@ export default function AdminMembri() {
                 <tbody>
                   {filtrate.map((r) => (
                     <tr key={r.id}>
-                      <td>{r.full_name || "—"}</td>
+                      <td><Link href={"/admin/membri/" + r.id} style={{ color: "var(--accent-2)" }}>{r.full_name || "—"}</Link></td>
                       <td>{r.email}</td>
                       <td>{r.phone || "—"}</td>
                       <td><span className={"role-pill " + r.role}>{r.role}</span></td>

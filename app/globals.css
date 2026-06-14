@@ -423,3 +423,11 @@ table.adm-table{width:100%;border-collapse:collapse;font-size:14px;min-width:680
 .role-pill.admin{color:#ffcf8f;border-color:color-mix(in srgb,#ffb35c 40%,var(--line))}
 .role-pill.staff{color:var(--accent-2);border-color:color-mix(in srgb,var(--accent-2) 40%,var(--line))}
 @media(max-width:820px){ .adm-stats{grid-template-columns:repeat(2,1fr)} }
+/* ===== ghid aparate (pagina publică) ===== */
+.mach-video{position:relative;width:100%;aspect-ratio:16/9;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#000}
+.mach-video iframe,.mach-video video{position:absolute;inset:0;width:100%;height:100%;border:0;object-fit:cover}
+.mach-steps{margin:14px 0 0;padding-left:20px;display:flex;flex-direction:column;gap:9px}
+.mach-steps li{font-size:15px;line-height:1.5;color:var(--ink)}
+/* textarea în formulare */
+.cform textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--ink);font-family:var(--fb);font-size:15px;resize:vertical}
+.cform textarea:focus{outline:none;border-color:var(--accent-2)}
