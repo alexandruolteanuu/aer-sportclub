@@ -463,3 +463,38 @@ table.adm-table{width:100%;border-collapse:collapse;font-size:14px;min-width:680
 .vf-sub{color:var(--muted);font-size:14px;margin-top:2px}
 .vf-result .btn{margin-left:auto}
 .vf-reader{width:100%;max-width:340px;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+/* ============================================================ */
+/*  FIX AUDIT — se adaugă la FINALUL fișierului globals.css      */
+/*  (în CSS, regula care vine ultima câștigă, deci e sigur)      */
+/* ============================================================ */
+
+/* ---- Bug #2: carduri albe pe homepage și /sala ----
+   Cauza: clasa ".qr-card" era folosită în două locuri diferite:
+   1) cardurile întunecate de pe homepage/sală (cu .glass)
+   2) cardurile ALBE pentru printarea codurilor QR (fără .glass)
+   Stilul alb de print le calca peste pe cele de pe homepage.
+   Soluția: o regulă mai specifică (.qr-card.glass) care prinde DOAR
+   cardurile cu .glass (homepage/sală) și le readuce forma originală.
+   Cardurile de print (.qr-card fără .glass) rămân albe — neatinse. */
+.qr-card.glass{
+  background:linear-gradient(160deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+  border-radius:26px;
+  padding:34px;
+  gap:18px;
+  text-align:initial;
+}
+
+/* ---- Bug #1: eticheta „Popular" / „Cel mai bun preț" tăiată ----
+   Cauza: badge-ul stătea în interiorul cardului, iar cardul are
+   "overflow:hidden" (de la .glass, necesar pentru efectul de lumină),
+   așa că partea care ieșea în sus era tăiată.
+   Soluția: badge-ul stă acum pe un container exterior (.plan-badge-wrap),
+   care NU taie, deci poate ieși frumos peste marginea de sus a cardului. */
+.plan-badge-wrap{position:relative;display:flex}
+.plan-badge-wrap > .plan{width:100%}
+.plan-badge-wrap > .badge-pop{
+  position:absolute;top:-11px;right:20px;z-index:3;
+  background:linear-gradient(120deg,var(--accent),var(--accent-2));
+  color:#06121a;font-size:11px;font-weight:700;letter-spacing:.04em;
+  padding:5px 12px;border-radius:999px;text-transform:uppercase;
+}

@@ -23,13 +23,16 @@ export default function Abonamente() {
   <div className="grp">
     <div className="grp-head reveal"><h2>Abonamente lunare</h2><span>Plătești lunar, te antrenezi non-stop.</span></div>
     <div className="plans">
-<div className="plan glass sweep reveal feat"><span className="badge-pop">Popular</span>
-  <span className="tag">LUNAR</span>
-  <div className="pn">Full</div>
-  <div className="pp">250 <small>lei / lună</small></div>
-  <div className="pd">Acces complet, non-stop, la toată sala.</div>
-  <ul className="pfeat"><li><i>✓</i> Fitness + cardio</li><li><i>✓</i> Saună, dușuri, vestiare</li><li><i>✓</i> Acces 24/7 cu cod QR</li></ul>
-  <button className="btn btn-primary magnetic" data-plan="Full" data-price="250 lei / lună">Alege Full</button>
+<div className="plan-badge-wrap reveal">
+  <span className="badge-pop">Popular</span>
+  <div className="plan glass sweep feat">
+    <span className="tag">LUNAR</span>
+    <div className="pn">Full</div>
+    <div className="pp">250 <small>lei / lună</small></div>
+    <div className="pd">Acces complet, non-stop, la toată sala.</div>
+    <ul className="pfeat"><li><i>✓</i> Fitness + cardio</li><li><i>✓</i> Saună, dușuri, vestiare</li><li><i>✓</i> Acces 24/7 cu cod QR</li></ul>
+    <button className="btn btn-primary magnetic" data-plan="Full" data-price="250 lei / lună">Alege Full</button>
+  </div>
 </div>
 <div className="plan glass sweep reveal">
   <span className="tag">LUNAR</span>
@@ -84,13 +87,16 @@ export default function Abonamente() {
   <ul className="pfeat"><li><i>✓</i> Acces complet</li><li><i>✓</i> Non-stop 24/7</li><li><i>✓</i> Preț mai bun pe lună</li></ul>
   <button className="btn btn-ghost magnetic" data-plan="6 luni" data-price="720 lei · 6 luni">Alege</button>
 </div>
-<div className="plan glass sweep reveal feat"><span className="badge-pop">Cel mai bun preț</span>
-  <span className="tag">PACHET</span>
-  <div className="pn">12 luni</div>
-  <div className="pp">1200 <small>lei</small></div><div className="pnote">≈ 100 lei / lună</div>
-  <div className="pd">Un an întreg — cel mai mic cost pe lună.</div>
-  <ul className="pfeat"><li><i>✓</i> Acces complet</li><li><i>✓</i> Non-stop 24/7</li><li><i>✓</i> Cel mai mic cost lunar</li></ul>
-  <button className="btn btn-primary magnetic" data-plan="12 luni" data-price="1200 lei · 12 luni">Alege</button>
+<div className="plan-badge-wrap reveal">
+  <span className="badge-pop">Cel mai bun preț</span>
+  <div className="plan glass sweep feat">
+    <span className="tag">PACHET</span>
+    <div className="pn">12 luni</div>
+    <div className="pp">1200 <small>lei</small></div><div className="pnote">≈ 100 lei / lună</div>
+    <div className="pd">Un an întreg — cel mai mic cost pe lună.</div>
+    <ul className="pfeat"><li><i>✓</i> Acces complet</li><li><i>✓</i> Non-stop 24/7</li><li><i>✓</i> Cel mai mic cost lunar</li></ul>
+    <button className="btn btn-primary magnetic" data-plan="12 luni" data-price="1200 lei · 12 luni">Alege</button>
+  </div>
 </div>
     </div>
   </div>
