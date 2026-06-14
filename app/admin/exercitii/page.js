@@ -26,7 +26,10 @@ export default function AdminExercitii() {
     <>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "12px", flexWrap: "wrap" }}>
         <h1 className="dash-h1">Ghid exerciții</h1>
-        <Link href="/admin/exercitii/nou" className="btn btn-primary magnetic">+ Adaugă exercițiu</Link>
+        <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
+          <Link href="/admin/exercitii/coduri" className="btn btn-ghost">Coduri QR</Link>
+          <Link href="/admin/exercitii/nou" className="btn btn-primary magnetic">+ Adaugă exercițiu</Link>
+        </div>
       </div>
 
       <div className="dash-card glass">

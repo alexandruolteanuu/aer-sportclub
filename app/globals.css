@@ -431,3 +431,35 @@ table.adm-table{width:100%;border-collapse:collapse;font-size:14px;min-width:680
 /* textarea în formulare */
 .cform textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--ink);font-family:var(--fb);font-size:15px;resize:vertical}
 .cform textarea:focus{outline:none;border-color:var(--accent-2)}
+/* ===== coduri QR + ghid exerciții (client) ===== */
+.qr-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-top:10px}
+.qr-card{border:1px solid var(--line);border-radius:16px;padding:18px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;background:#fff}
+.qr-card canvas{border-radius:8px}
+.qr-card .qr-name{font-family:var(--fd);font-size:16px;color:#0b0f14}
+.qr-card .qr-url{font-size:10.5px;color:#5a6672;word-break:break-all;line-height:1.3}
+.ex-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-top:10px}
+.ex-card{border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:5px;transition:.2s}
+.ex-card:hover{border-color:var(--accent-2);transform:translateY(-2px)}
+.ex-card .ex-name{font-family:var(--fd);font-size:17px}
+@media print{
+  #hdr,#mnav,footer,.grain,.sun-glow,#bgCanvas,.dash-side,.no-print{display:none !important}
+  .dash{display:block !important;padding:0 !important}
+  .dash-main{gap:0}
+  body{background:#fff}
+  .qr-card{break-inside:avoid;page-break-inside:avoid}
+}
+/* ===== cod de acces (QR dinamic) ===== */
+.acc-qr{background:#fff;padding:16px;border-radius:18px;line-height:0}
+.acc-bar{width:100%;height:7px;border-radius:999px;background:rgba(255,255,255,.10);overflow:hidden}
+.acc-bar span{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2));transition:width .5s linear}
+/* ===== verificare acces ===== */
+.vf-result{display:flex;align-items:center;gap:16px;border-radius:18px;padding:20px 22px;border:1px solid var(--line)}
+.vf-result.ok{background:color-mix(in srgb,#46c08a 14%, transparent);border-color:color-mix(in srgb,#46c08a 40%, var(--line))}
+.vf-result.no{background:color-mix(in srgb,#e05a5a 14%, transparent);border-color:color-mix(in srgb,#e05a5a 40%, var(--line))}
+.vf-ic{width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:700;flex:none;color:#06210f}
+.vf-result.ok .vf-ic{background:#46c08a}
+.vf-result.no .vf-ic{background:#e05a5a;color:#2a0a0a}
+.vf-title{font-family:var(--fd);font-size:22px}
+.vf-sub{color:var(--muted);font-size:14px;margin-top:2px}
+.vf-result .btn{margin-left:auto}
+.vf-reader{width:100%;max-width:340px;border-radius:14px;overflow:hidden;border:1px solid var(--line)}

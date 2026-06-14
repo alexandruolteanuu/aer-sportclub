@@ -40,8 +40,8 @@ export default function AdminNav() {
       <Item href="/admin/membri" icon={Ic.users}>Membri</Item>
       <Soon icon={Ic.card}>Abonamente</Soon>
       <Soon icon={Ic.receipt}>Plăți & facturi</Soon>
-      <Soon icon={Ic.scan}>Acces & intrări</Soon>
-      <Item href="/admin/exercitii" icon={Ic.dumbbell}>Ghid exerciții</Item>
+      <Item href="/admin/acces" icon={Ic.scan}>Verifică acces</Item>
+      <Soon icon={Ic.dumbbell}>Ghid aparate</Soon>
       <Soon icon={Ic.staff}>Personal</Soon>
       <Soon icon={Ic.cog}>Setări sală</Soon>
       <Item href="/cont" icon={Ic.back}>Zona mea</Item>
