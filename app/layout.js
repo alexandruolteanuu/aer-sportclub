@@ -9,11 +9,19 @@ export const metadata = {
   description: "O altfel de sală de fitness. Acces non-stop, 24/7, în Târgu Neamț.",
 };
 
-// Componentă server (async): citește din sesiune dacă ești logat.
+// Componentă server (async): citește sesiunea + setările sălii.
 export default async function RootLayout({ children }) {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
   const isLoggedIn = !!user;
+
+  // setările sălii (cu valori de rezervă dacă lipsesc)
+  const { data: s } = await supabase.from("settings").select("*").eq("id", 1).single();
+  const numeSala = (s && s.gym_name) || "Aer SportClub";
+  const adresa = (s && s.address) || "Târgu Neamț";
+  const telefon = (s && s.phone) || "";
+  const email = (s && s.email) || "contact@aersportclub.ro";
+  const program = (s && s.schedule) || "Non-stop · 24/7";
 
   return (
     <html lang="ro">
@@ -69,7 +77,7 @@ export default async function RootLayout({ children }) {
         <footer id="contact">
           <div className="wrap foot">
             <div>
-              <div className="fd" style={{ fontSize: "22px" }}>Aer SportClub</div>
+              <div className="fd" style={{ fontSize: "22px" }}>{numeSala}</div>
               <p className="muted" style={{ maxWidth: "260px", marginTop: "10px", fontSize: "14px" }}>
                 O altfel de sală. Te așteptăm să te convingi.
               </p>
@@ -78,14 +86,19 @@ export default async function RootLayout({ children }) {
               <Link href="/sala">Sala</Link>
               <Link href="/abonamente">Abonamente</Link>
               <Link href="/contact">Contact</Link>
+              <Link href="/termeni">Termeni</Link>
+              <Link href="/confidentialitate">Confidențialitate</Link>
+              <Link href="/cookies">Cookies</Link>
             </div>
             <div className="muted" style={{ fontSize: "14px", lineHeight: "1.9" }}>
-              Târgu Neamț<br />Adresa — în curând<br />07xx xxx xxx<br />contact@aersportclub.ro<br />
-              <b style={{ color: "var(--ink)" }}>Deschis 24/7</b>
+              {adresa}<br />
+              {telefon && <>{telefon}<br /></>}
+              {email}<br />
+              <b style={{ color: "var(--ink)" }}>{program}</b>
             </div>
           </div>
           <div className="wrap">
-            <p className="muted" style={{ fontSize: "12px", marginTop: "34px" }}>© 2026 Aer SportClub · Târgu Neamț</p>
+            <p className="muted" style={{ fontSize: "12px", marginTop: "34px" }}>© 2026 {numeSala} · Târgu Neamț</p>
           </div>
         </footer>
       </body>

@@ -45,7 +45,7 @@ export default function AdminNav() {
       <Item href="/admin/intrari" icon={Ic.list}>Istoric intrări</Item>
       <Soon icon={Ic.dumbbell}>Ghid aparate</Soon>
       <Item href="/admin/personal" icon={Ic.staff}>Personal</Item>
-      <Soon icon={Ic.cog}>Setări sală</Soon>
+      <Item href="/admin/setari" icon={Ic.cog}>Setări sală</Item>
       <Item href="/cont" icon={Ic.back}>Zona mea</Item>
     </nav>
   );
