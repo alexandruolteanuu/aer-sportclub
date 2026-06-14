@@ -318,3 +318,52 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);padding:56px
   -webkit-backdrop-filter:blur(26px);
   box-shadow:0 40px 90px -30px rgba(0,0,0,.92);
 }
+/* ===== pagina contact ===== */
+.cform{margin-top:26px;display:flex;flex-direction:column;gap:14px;max-width:460px}
+.cform .field{display:flex;flex-direction:column;gap:7px}
+.cform label{font-size:13px;color:var(--muted)}
+.cform input,.cform textarea{
+  width:100%;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:12px;
+  padding:12px 14px;color:var(--ink);font-family:var(--fb);font-size:15px;outline:none;transition:.2s;resize:vertical}
+.cform input::placeholder,.cform textarea::placeholder{color:#5e6b77}
+.cform input:focus,.cform textarea:focus{border-color:var(--accent-2);background:rgba(255,255,255,.06)}
+.cform-result{display:none;border-radius:12px;padding:13px 15px;font-size:13.5px;line-height:1.55;margin-top:2px}
+.cform-result.show{display:block}
+.cform-result.ok{border:1px solid color-mix(in srgb,var(--accent) 30%, var(--line));background:color-mix(in srgb,var(--accent) 10%, transparent);color:var(--ink)}
+.cform-result.err{border:1px solid rgba(224,106,90,.4);background:rgba(224,106,90,.10);color:#f0b8af}
+
+.contact-card{border-radius:22px;padding:30px;display:flex;flex-direction:column;gap:4px}
+.contact-card .ci{display:flex;flex-direction:column;gap:2px;padding:14px 0;border-bottom:1px solid var(--line)}
+.contact-card .ci:last-child{border-bottom:0}
+.contact-card .ci-k{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.contact-card .ci-v{font-family:var(--fd);font-size:17px}
+
+.faq{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.faq-item{border-radius:18px;padding:24px}
+.faq-item h3{font-size:18px}
+.faq-item p{color:var(--muted);font-size:14.5px;margin-top:8px}
+@media(max-width:680px){ .faq{grid-template-columns:1fr} }
+/* ===== pagini legale ===== */
+.legal{max-width:760px}
+.legal-upd{color:var(--muted);font-size:13px;margin-bottom:30px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+.legal-block{margin-bottom:30px}
+.legal-block h2{font-size:clamp(20px,2.6vw,28px);font-weight:700;margin-bottom:12px}
+.legal-block p{color:#c2ccd4;font-size:15.5px;line-height:1.75;margin-bottom:10px}
+.legal-block p:last-child{margin-bottom:0}
+/* ===== pagini auth (înregistrare / login) ===== */
+.auth-wrap{max-width:470px;margin:0 auto;padding:130px 24px 90px}
+.auth-card{border-radius:24px;padding:34px}
+.auth-card h1{font-size:clamp(28px,4vw,40px);font-weight:800;margin-top:8px}
+.auth-card .sub{color:var(--muted);font-size:15px;margin-top:8px}
+.auth-row{display:flex;gap:12px}
+.auth-row .field{flex:1}
+.auth-check{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:var(--muted);margin-top:2px;cursor:pointer}
+.auth-check input{width:18px;height:18px;margin-top:1px;flex:none;accent-color:var(--accent);cursor:pointer}
+.auth-check a{color:var(--accent-2)}
+.auth-alt{text-align:center;font-size:14px;color:var(--muted);margin-top:18px}
+.auth-alt a{color:var(--accent-2)}
+.auth-msg{border-radius:12px;padding:12px 14px;font-size:13.5px;line-height:1.5}
+.auth-msg.err{border:1px solid rgba(224,106,90,.4);background:rgba(224,106,90,.10);color:#f0b8af}
+.auth-ok{text-align:center;padding:8px 0}
+.auth-ok .ok-ic{width:60px;height:60px;border-radius:50%;margin:0 auto 16px;display:grid;place-items:center;font-size:26px;font-weight:700;background:color-mix(in srgb,var(--accent) 22%,transparent);color:var(--accent-2)}
+.btn[disabled]{opacity:.6;cursor:default}

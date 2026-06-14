@@ -33,7 +33,6 @@ export default function RootLayout({ children }) {
             <div className="links">
               <Link href="/sala">Sala</Link>
               <Link href="/abonamente">Abonamente</Link>
-              <Link href="/aparate">Ghid aparate</Link>
               <Link href="/contact">Contact</Link>
             </div>
 
@@ -52,7 +51,6 @@ export default function RootLayout({ children }) {
         <div id="mnav">
           <Link href="/sala">Sala</Link>
           <Link href="/abonamente">Abonamente</Link>
-          <Link href="/aparate">Ghid aparate</Link>
           <Link href="/contact">Contact</Link>
           <Link href="/login">Intră în cont</Link>
         </div>
@@ -72,7 +70,6 @@ export default function RootLayout({ children }) {
             <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
               <Link href="/sala">Sala</Link>
               <Link href="/abonamente">Abonamente</Link>
-              <Link href="/aparate">Ghid aparate</Link>
               <Link href="/contact">Contact</Link>
             </div>
             <div className="muted" style={{ fontSize: "14px", lineHeight: "1.9" }}>
@@ -80,8 +77,13 @@ export default function RootLayout({ children }) {
               <b style={{ color: "var(--ink)" }}>Deschis 24/7</b>
             </div>
           </div>
-          <div className="wrap">
-            <p className="muted" style={{ fontSize: "12px", marginTop: "34px" }}>© 2026 Aer SportClub · Târgu Neamț</p>
+          <div className="wrap" style={{ marginTop: "34px" }}>
+            <div style={{ display: "flex", gap: "18px", flexWrap: "wrap", marginBottom: "10px" }}>
+              <Link href="/termeni" className="muted" style={{ fontSize: "12px" }}>Termeni și condiții</Link>
+              <Link href="/confidentialitate" className="muted" style={{ fontSize: "12px" }}>Confidențialitate</Link>
+              <Link href="/cookies" className="muted" style={{ fontSize: "12px" }}>Cookies</Link>
+            </div>
+            <p className="muted" style={{ fontSize: "12px" }}>© 2026 Aer SportClub · Târgu Neamț</p>
           </div>
         </footer>
       </body>
