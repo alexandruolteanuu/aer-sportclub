@@ -48,7 +48,7 @@ export default function DashNav({ rol }) {
       <Item href="/cont/intrari" icon={Ic.list}>Istoric intrări</Item>
       <Item href="/cont/profil" icon={Ic.user}>Profil</Item>
       <Item href="/cont/setari" icon={Ic.cog}>Setări</Item>
-      {esteAdmin && <Soon icon={Ic.shield}>Administrare</Soon>}
+      {esteAdmin && <Item href="/admin" icon={Ic.shield}>Administrare</Item>}
     </nav>
   );
 }
