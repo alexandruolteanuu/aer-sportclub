@@ -498,3 +498,43 @@ table.adm-table{width:100%;border-collapse:collapse;font-size:14px;min-width:680
   color:#06121a;font-size:11px;font-weight:700;letter-spacing:.04em;
   padding:5px 12px;border-radius:999px;text-transform:uppercase;
 }
+/* ============================================================ */
+/*  HOMEPAGE — completări pentru textele noi                     */
+/*  Se adaugă la FINALUL fișierului globals.css                  */
+/* ============================================================ */
+
+/* ---- „Cum arată Aer”: carduri cu imagine + text peste ----
+   Acum sunt placeholdere (fundal degradat). Când ai pozele reale,
+   pui o imagine în .gph (vezi nota din ghid). */
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:10px}
+.gallery .gtile{position:relative;border-radius:20px;overflow:hidden;min-height:240px;display:flex;align-items:flex-end;padding:22px}
+.gallery .gph{position:absolute;inset:0;z-index:0;background:linear-gradient(150deg,var(--navy),#06121a)}
+.gallery .gph::after{content:"Foto în curând";position:absolute;top:12px;left:12px;font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);background:rgba(255,255,255,.05);border:1px solid var(--line);padding:4px 9px;border-radius:999px}
+.gallery .gtile:nth-child(2) .gph{background:linear-gradient(150deg,#0c2230,#000)}
+.gallery .gtile:nth-child(3) .gph{background:linear-gradient(150deg,#13344a,#06121a)}
+.gallery .gtile:nth-child(4) .gph{background:linear-gradient(150deg,#0a1c28,#000)}
+.gallery .gtile:nth-child(5) .gph{background:linear-gradient(150deg,var(--navy-soft),#06121a)}
+.gallery .gov{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,transparent 40%,rgba(5,8,12,.85))}
+.gallery .gtc{position:relative;z-index:2}
+.gallery .gtc h3{font-size:22px}
+@media (max-width:900px){.gallery{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.gallery{grid-template-columns:1fr}}
+
+/* ---- Statisticile devenite text (nu mai sunt cifre) ---- */
+.stat.txt .v{font-size:clamp(20px,3vw,30px);line-height:1.18;letter-spacing:-.01em}
+
+/* ---- Harta (Google Maps încorporat) ---- */
+.map-wrap{position:relative;border-radius:26px;overflow:hidden;border:1px solid var(--line);margin-top:10px}
+.map-wrap iframe{display:block;width:100%;height:440px;border:0;
+  /* aspect „dark” ca să se potrivească cu tema; dacă vrei harta normală, șterge linia filter de mai jos */
+  filter:invert(.9) hue-rotate(180deg) brightness(.95) contrast(.9)}
+@media (max-width:560px){.map-wrap iframe{height:340px}}
+
+/* ---- Efect de scanner peste codul QR din secțiunea „Acces non-stop” ---- */
+.qr-wrap{position:relative;width:200px;height:200px}
+.qr-scan{position:absolute;left:6px;right:6px;top:6px;height:26px;border-radius:8px;pointer-events:none;
+  background:linear-gradient(180deg, rgba(95,179,214,0), rgba(95,179,214,.18) 55%, rgba(95,179,214,.55));
+  box-shadow:0 0 16px 3px rgba(95,179,214,.45);
+  animation:qrscan 2.4s ease-in-out infinite}
+@keyframes qrscan{0%{transform:translateY(0);opacity:0}12%{opacity:1}88%{opacity:1}100%{transform:translateY(168px);opacity:0}}
+@media (prefers-reduced-motion: reduce){.qr-scan{display:none}}
