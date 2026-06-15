@@ -1,4 +1,5 @@
 import HomeEffects from "./HomeEffects";
+import HeroLogo3D from "./HeroLogo3D";
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
   <div className="hero-media"><img src="/images/fatada.jpg" alt="Aer SportClub — fațada clubului" /></div>
   <div className="hero-grade"></div>
   <svg className="sun-arc" id="sunArc" viewBox="0 0 1000 360" preserveAspectRatio="xMidYMid slice"></svg>
+  <HeroLogo3D />
   <div className="hero-inner">
     <div className="wrap">
       <span className="hero-badge"><span className="dot-live"></span> Deschis 24/24</span>

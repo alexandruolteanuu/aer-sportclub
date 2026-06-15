@@ -538,3 +538,39 @@ table.adm-table{width:100%;border-collapse:collapse;font-size:14px;min-width:680
   animation:qrscan 2.4s ease-in-out infinite}
 @keyframes qrscan{0%{transform:translateY(0);opacity:0}12%{opacity:1}88%{opacity:1}100%{transform:translateY(168px);opacity:0}}
 @media (prefers-reduced-motion: reduce){.qr-scan{display:none}}
+/* ============================================================ */
+/*  LOGO „Aer” 3D ÎN HERO                                         */
+/*  Se adaugă la FINALUL fișierului globals.css                  */
+/* ============================================================ */
+.logo3d{position:absolute;z-index:2;top:50%;right:5%;transform:translateY(-50%);
+  width:min(42vw,460px);aspect-ratio:1 / 1;pointer-events:none;perspective:1100px}
+
+/* halou difuz în spatele logo-ului */
+.logo3d-glow{position:absolute;inset:-14%;z-index:-1;
+  background:radial-gradient(circle at 50% 46%, color-mix(in srgb,var(--accent) 38%, transparent), transparent 62%);
+  filter:blur(26px)}
+
+/* corpul care se rotește (ține toate feliile 3D) */
+.logo3d-rot{position:absolute;inset:0;transform-style:preserve-3d;
+  animation:logo3dspin 8s ease-in-out infinite;will-change:transform}
+.logo3d-rot > div{position:absolute;inset:0;display:grid;place-items:center}
+.logo3d-rot svg{width:100%;height:100%;display:block}
+
+/* fața (logo-ul complet, cu „Aer” alb) — primește umbra */
+.logo3d-face{transform:translateZ(0.5px)}
+.logo3d-face svg{filter:drop-shadow(0 26px 44px rgba(0,0,0,.55))}
+
+/* rotația lină stânga-dreapta (efect 3D) */
+@keyframes logo3dspin{
+  0%{transform:rotateX(6deg) rotateY(-24deg)}
+  50%{transform:rotateX(-3deg) rotateY(24deg)}
+  100%{transform:rotateX(6deg) rotateY(-24deg)}
+}
+
+/* dacă utilizatorul preferă mai puțină mișcare, logo-ul stă fix, ușor înclinat */
+@media (prefers-reduced-motion:reduce){
+  .logo3d-rot{animation:none;transform:rotateY(-14deg) rotateX(4deg)}
+}
+
+/* pe ecrane mici ascundem logo-ul 3D ca să nu acopere textul din hero */
+@media (max-width:980px){ .logo3d{display:none} }
