@@ -42,8 +42,9 @@ export default async function RootLayout({ children }) {
             </Link>
 
             <div className="links">
-              <Link href="/sala">Sala</Link>
+              <Link href="/#oferta">Facilități</Link>
               <Link href="/abonamente">Abonamente</Link>
+              <Link href="/#app">Descarcă Aplicația</Link>
               <Link href="/contact">Contact</Link>
             </div>
 
@@ -58,8 +59,9 @@ export default async function RootLayout({ children }) {
 
         {/* Meniu mobil */}
         <div id="mnav">
-          <Link href="/sala">Sala</Link>
+          <Link href="/#oferta">Facilități</Link>
           <Link href="/abonamente">Abonamente</Link>
+          <Link href="/#app">Descarcă Aplicația</Link>
           <Link href="/contact">Contact</Link>
           {isLoggedIn
             ? <Link href="/cont">Contul meu</Link>
@@ -73,9 +75,9 @@ export default async function RootLayout({ children }) {
         <footer id="contact">
           <div className="wrap foot">
             <div>
-              <div className="fd" style={{ fontSize: "22px" }}>{numeSala}</div>
-              <p className="muted" style={{ maxWidth: "260px", marginTop: "10px", fontSize: "14px" }}>
-                O altfel de sală. Te așteptăm să te convingi.
+              <img src="/images/logo.png" alt={numeSala} style={{ height: "34px", width: "auto", display: "block" }} />
+              <p className="muted" style={{ maxWidth: "280px", marginTop: "12px", fontSize: "14px" }}>
+                Transformă-ți ambiția în rezultate. Te așteptăm la antrenament!
               </p>
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>

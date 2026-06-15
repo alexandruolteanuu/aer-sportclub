@@ -16,9 +16,9 @@ export default function Home() {
     <div className="wrap">
       <span className="hero-badge"><span className="dot-live"></span> Deschis 24/24</span>
       <h1>
-        <span className="ln"><span>Depășește-ți</span></span>
-        <span className="ln"><span>limitele!</span></span>
-        <span className="ln"><span className="dim">Te așteptăm la Aer!</span></span>
+        <span className="ln"><span>Transformă-ți ambiția</span></span>
+        <span className="ln"><span>în rezultate.</span></span>
+        <span className="ln"><span className="dim">Te așteptăm la antrenament!</span></span>
       </h1>
       <p className="sub">Program non-stop — te antrenezi când vrei.</p>
       <div className="cta">
@@ -175,21 +175,30 @@ export default function Home() {
           <div className="island"></div>
           <div className="app-screen">
             <div className="ap-top">
-              <div><span className="muted" style={{fontSize: '11px'}}>Bună dimineața,</span><div className="fd">Alex</div></div>
-              <div className="ap-av">AP</div>
+              <div><span className="muted" style={{fontSize: '11px'}}>Bine ai venit la Aer</span><div className="fd">Salutare! 👋</div></div>
+              <div className="ap-av">A</div>
+            </div>
+            <div className="ap-status">
+              <span className="ap-pill"><i></i> Abonament activ</span>
+              <div className="fd ap-plan">Full · Lunar</div>
+              <div className="ap-bar"><i></i></div>
             </div>
             <div className="ap-access">
               <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
                 <span className="eyebrow" style={{fontSize: '9px', color: '#bcd9e8'}}>Acces sală</span>
                 <span className="ap-live">● Deschis · 24/7</span>
               </div>
-              <div className="ap-qr" id="appqr"></div>
+              <div className="ap-qr-wrap">
+                <div className="ap-qr" id="appqr"></div>
+                <div className="ap-scan"></div>
+              </div>
               <div className="muted" style={{fontSize: '10px', textAlign: 'center', marginTop: '7px'}}>Scanează la intrare</div>
             </div>
             <div className="ap-row">
-              <div className="ap-mini"><span className="muted" style={{fontSize: '10px'}}>Abonament</span><div className="fd">Full · activ</div></div>
               <div className="ap-mini"><span className="muted" style={{fontSize: '10px'}}>Intrări luna asta</span><div className="fd">14</div></div>
+              <div className="ap-mini"><span className="muted" style={{fontSize: '10px'}}>Ultima vizită</span><div className="fd">ieri</div></div>
             </div>
+            <div className="ap-toast"><span className="ck">✓</span> Acces permis · acum</div>
             <div className="ap-tabs">
               <div className="ap-tab on"><svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg></div>
               <div className="ap-tab"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6-7-11a7 7 0 0114 0c0 5-7 11-7 11z"/><circle cx="12" cy="10" r="2.3"/></svg></div>
@@ -221,6 +230,16 @@ export default function Home() {
 </section>
 
 
+<section className="final">
+  <div className="reveal">
+    <span className="eyebrow">Te așteptăm</span>
+    <h2>Antrenează-te la Aer SportClub.</h2>
+    <p>Noi te ajutăm să îți depășești toate obiectivele!</p>
+    <a className="btn btn-primary magnetic" style={{marginTop: '32px', padding: '15px 32px'}} href="/inregistrare">Creează cont</a>
+  </div>
+</section>
+
+
 <section className="section" id="locatie">
   <div className="wrap">
     <div className="sec-head reveal">
@@ -234,16 +253,6 @@ export default function Home() {
     <div style={{textAlign: 'center', marginTop: '24px'}} className="reveal">
       <a className="btn btn-primary magnetic" href="https://www.google.com/maps/search/?api=1&query=Kaufland+Targu+Neamt" target="_blank" rel="noopener noreferrer">Deschide în Google Maps</a>
     </div>
-  </div>
-</section>
-
-
-<section className="final">
-  <div className="reveal">
-    <span className="eyebrow">Te așteptăm</span>
-    <h2>Antrenează-te la Aer SportClub.</h2>
-    <p>Noi te ajutăm să îți depășești toate obiectivele!</p>
-    <a className="btn btn-primary magnetic" style={{marginTop: '32px', padding: '15px 32px'}} href="/inregistrare">Creează cont</a>
   </div>
 </section>
 

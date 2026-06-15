@@ -44,8 +44,9 @@ export default function HomeEffects() {
     const mq = document.getElementById("mq");
     if (mq) {
       const words = ["24/7", "FITNESS", "CARDIO", "SAUNĂ"];
-      const make = () => words.map((w, i) => '<span class="' + (i % 2 ? "fill" : "") + '">' + w + "</span><span>•</span>").join("");
-      mq.innerHTML = make() + make();
+      const unit = words.map((w, i) => '<span class="' + (i % 2 ? "fill" : "") + '">' + w + "</span><span>•</span>").join("");
+      const half = unit.repeat(8);   // o jumătate suficient de lată cât să acopere ecranul
+      mq.innerHTML = half + half;     // două jumătăți identice -> deplasarea de -50% e perfect continuă
     }
 
     /* ---------- QR demo (se reîmprospătează) ---------- */
@@ -74,15 +75,20 @@ export default function HomeEffects() {
         if (qs <= 0) { qs = 20; makeQR("qr", 25); }
       }, 1000);
     }
-    // mini-QR din telefon
+    // mini-QR din telefon (se reîmprospătează -> mișcare în aplicație)
+    let appqrTimer = null;
     const aq = document.getElementById("appqr");
     if (aq) {
       const N = 17;
       aq.style.gridTemplateColumns = "repeat(" + N + ",1fr)";
-      const cells = Array.from({ length: N * N }, () => Math.random() > 0.5);
-      function f(r0, c0) { for (let i = 0; i < 5; i++) for (let j = 0; j < 5; j++) { const on = (i === 0 || i === 4 || j === 0 || j === 4) || (i === 2 && j === 2); cells[(r0 + i) * N + (c0 + j)] = on; } }
-      f(0, 0); f(0, N - 5); f(N - 5, 0);
-      aq.innerHTML = cells.map((o) => '<div class="qc' + (o ? " on" : "") + '"></div>').join("");
+      const makeAppQR = () => {
+        const cells = Array.from({ length: N * N }, () => Math.random() > 0.5);
+        const f = (r0, c0) => { for (let i = 0; i < 5; i++) for (let j = 0; j < 5; j++) { const on = (i === 0 || i === 4 || j === 0 || j === 4) || (i === 2 && j === 2); cells[(r0 + i) * N + (c0 + j)] = on; } };
+        f(0, 0); f(0, N - 5); f(N - 5, 0);
+        aq.innerHTML = cells.map((o) => '<div class="qc' + (o ? " on" : "") + '"></div>').join("");
+      };
+      makeAppQR();
+      if (!RM) appqrTimer = setInterval(makeAppQR, 2800);
     }
 
     /* ---------- COUNT-UP (numerele din Stats) ---------- */
@@ -128,6 +134,7 @@ export default function HomeEffects() {
     return () => {
       clearInterval(arcTimer);
       if (qrTimer) clearInterval(qrTimer);
+      if (appqrTimer) clearInterval(appqrTimer);
       countObs.disconnect(); revObs.disconnect(); sweepObs.disconnect();
       if (stage && tiltMove) { stage.removeEventListener("mousemove", tiltMove); stage.removeEventListener("mouseleave", tiltLeave); }
     };
