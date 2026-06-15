@@ -574,3 +574,34 @@ table.adm-table{width:100%;border-collapse:collapse;font-size:14px;min-width:680
 
 /* pe ecrane mici ascundem logo-ul 3D ca să nu acopere textul din hero */
 @media (max-width:980px){ .logo3d{display:none} }
+/* ============================================================ */
+/*  AJUSTĂRI HERO — banner îngust, titlu mai mic, reflexie logo  */
+/*  Se adaugă la FINALUL fișierului globals.css                  */
+/* ============================================================ */
+
+/* 1) Bannerul din spate (fațada) — cât lățimea conținutului (max 1200px),
+      nu pe tot ecranul. Colțuri rotunjite, centrat. */
+.hero{min-height:94vh}
+.hero-banner{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:calc(100% - 48px);max-width:1200px;height:86vh;max-height:800px;
+  border-radius:30px;overflow:hidden;z-index:0}
+
+/* 2) Titlul din hero — mult mai mic decât înainte (era enorm) */
+.hero h1{font-size:clamp(28px,4.8vw,54px);line-height:1.04}
+
+/* 3) Logo 3D — rotația o face acum JavaScript-ul, deci oprim animația din CSS */
+.logo3d-rot{animation:none}
+
+/* 4) Reflexia (banda de lumină) care alunecă pe logo când se rotește.
+      E „decupată” pe forma literei A, ca să apară doar pe logo. */
+.logo3d-shine{position:absolute;inset:0;pointer-events:none;opacity:.5;mix-blend-mode:screen;
+  background:linear-gradient(115deg,
+    rgba(255,255,255,0) 38%,
+    rgba(255,255,255,.20) 46%,
+    rgba(255,255,255,.72) 50%,
+    rgba(255,255,255,.20) 54%,
+    rgba(255,255,255,0) 62%);
+  background-size:280% 100%;background-position:50% 0;background-repeat:no-repeat;
+  -webkit-mask:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20320%20311%27%3E%3Cpath%20d%3D%27M%20102%200%20L%20200%200%20L%20302%20310%20L%20220%20310%20L%20151%2096%20L%2082%20310%20L%200%20310%20Z%27%20fill%3D%27%23fff%27%2F%3E%3C%2Fsvg%3E") center / contain no-repeat;
+          mask:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20320%20311%27%3E%3Cpath%20d%3D%27M%20102%200%20L%20200%200%20L%20302%20310%20L%20220%20310%20L%20151%2096%20L%2082%20310%20L%200%20310%20Z%27%20fill%3D%27%23fff%27%2F%3E%3C%2Fsvg%3E") center / contain no-repeat;
+}

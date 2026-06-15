@@ -6,10 +6,12 @@ export default function Home() {
     <>
 
 <section className="hero">
-  <div className="hero-media"><img src="/images/fatada.jpg" alt="Aer SportClub — fațada clubului" /></div>
-  <div className="hero-grade"></div>
-  <svg className="sun-arc" id="sunArc" viewBox="0 0 1000 360" preserveAspectRatio="xMidYMid slice"></svg>
-  <HeroLogo3D />
+  <div className="hero-banner">
+    <div className="hero-media"><img src="/images/fatada.jpg" alt="Aer SportClub — fațada clubului" /></div>
+    <div className="hero-grade"></div>
+    <svg className="sun-arc" id="sunArc" viewBox="0 0 1000 360" preserveAspectRatio="xMidYMid slice"></svg>
+    <HeroLogo3D />
+  </div>
   <div className="hero-inner">
     <div className="wrap">
       <span className="hero-badge"><span className="dot-live"></span> Deschis 24/24</span>
