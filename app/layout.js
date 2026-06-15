@@ -38,11 +38,7 @@ export default async function RootLayout({ children }) {
         <header id="hdr">
           <nav className="bar">
             <Link href="/" className="brand" aria-label="Aer SportClub acasă">
-              <svg viewBox="0 0 820 311" aria-label="Aer SportClub">
-                <path d="M 102 0 L 200 0 L 302 310 L 220 310 L 151 96 L 82 310 L 0 310 Z" fill="#234a66"/>
-                <path d="M 128 149 L 154 149 L 178 221 L 157 221 L 141 174 L 125 221 L 104 221 Z" fill="#fff"/>
-                <text x="184" y="221" fontFamily="Bricolage Grotesque" fontWeight="700" fontSize="86" letterSpacing="-3" fill="#fff">er SportClub</text>
-              </svg>
+              <img src="/images/logo.png" alt="Aer SportClub" className="brand-logo" />
             </Link>
 
             <div className="links">

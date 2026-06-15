@@ -43,7 +43,7 @@ export default function HomeEffects() {
     /* ---------- MARQUEE ---------- */
     const mq = document.getElementById("mq");
     if (mq) {
-      const words = ["NON-STOP", "24/7", "FORȚĂ", "CARDIO", "SAUNĂ", "TÂRGU NEAMȚ"];
+      const words = ["24/7", "FITNESS", "CARDIO", "SAUNĂ"];
       const make = () => words.map((w, i) => '<span class="' + (i % 2 ? "fill" : "") + '">' + w + "</span><span>•</span>").join("");
       mq.innerHTML = make() + make();
     }

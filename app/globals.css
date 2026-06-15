@@ -605,3 +605,35 @@ table.adm-table{width:100%;border-collapse:collapse;font-size:14px;min-width:680
   -webkit-mask:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20320%20311%27%3E%3Cpath%20d%3D%27M%20102%200%20L%20200%200%20L%20302%20310%20L%20220%20310%20L%20151%2096%20L%2082%20310%20L%200%20310%20Z%27%20fill%3D%27%23fff%27%2F%3E%3C%2Fsvg%3E") center / contain no-repeat;
           mask:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20320%20311%27%3E%3Cpath%20d%3D%27M%20102%200%20L%20200%200%20L%20302%20310%20L%20220%20310%20L%20151%2096%20L%2082%20310%20L%200%20310%20Z%27%20fill%3D%27%23fff%27%2F%3E%3C%2Fsvg%3E") center / contain no-repeat;
 }
+/* ============================================================ */
+/*  HEADER PESTE BANNER + LOGO IMAGINE + MOBILE                   */
+/*  Se adaugă la FINALUL fișierului globals.css                  */
+/* ============================================================ */
+
+/* Bannerul urcă sub meniu (spațiul gol rămâne jos, nu sus),
+   ca meniul să stea frumos PESTE banner, nu deasupra lui. */
+.hero-banner{top:12px;transform:translateX(-50%)}
+
+/* Scrim întunecat sus, ca meniul (logo + linkuri) să fie lizibil peste banner. */
+.hero-banner::after{content:"";position:absolute;left:0;right:0;top:0;height:130px;z-index:2;pointer-events:none;
+  background:linear-gradient(180deg, rgba(5,8,12,.72), rgba(5,8,12,0))}
+
+/* Logo-ul din header — acum imagine (fontul corect din logo-ul original). */
+.brand img.brand-logo{height:34px;width:auto;display:block}
+
+/* ===================== MOBILE ===================== */
+@media (max-width:980px){
+  /* bannerul ocupă tot, cu o margine mică (rămâne îngust/rotunjit) */
+  .hero-banner{left:10px;right:10px;top:10px;bottom:10px;width:auto;height:auto;max-height:none;transform:none;border-radius:22px}
+  .hero{min-height:86vh}
+}
+@media (max-width:680px){
+  .hero-banner{left:8px;right:8px;top:8px;bottom:8px;border-radius:18px}
+  .hero{min-height:82vh}
+  .hero h1{font-size:clamp(26px,7.6vw,38px)}
+  .hero .sub{font-size:15px;margin-top:16px}
+  .hero .cta{margin-top:26px}
+  .hero .cta .btn{padding:12px 18px;font-size:14px}
+  .brand img.brand-logo{height:28px}
+  .hero-banner::after{height:96px}
+}
