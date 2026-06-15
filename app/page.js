@@ -230,28 +230,19 @@ export default function Home() {
 </section>
 
 
-<section className="final">
-  <div className="reveal">
-    <span className="eyebrow">Te așteptăm</span>
-    <h2>Antrenează-te la Aer SportClub.</h2>
-    <p>Noi te ajutăm să îți depășești toate obiectivele!</p>
-    <a className="btn btn-primary magnetic" style={{marginTop: '32px', padding: '15px 32px'}} href="/inregistrare">Creează cont</a>
-  </div>
-</section>
-
-
 <section className="section" id="locatie">
   <div className="wrap">
     <div className="sec-head reveal">
-      <span className="eyebrow">Unde ne găsești</span>
-      <h2>Vino la Aer SportClub.</h2>
-      <p>Ne găsești în Târgu Neamț. Apasă pe buton ca să deschizi traseul direct în Google Maps.</p>
+      <span className="eyebrow">Te așteptăm</span>
+      <h2>Antrenează-te la Aer SportClub.</h2>
+      <p>Noi te ajutăm să îți depășești toate obiectivele. Ne găsești în Târgu Neamț — vino să te convingi.</p>
     </div>
     <div className="map-wrap glass reveal">
       <iframe title="Harta Aer SportClub — Târgu Neamț" src="https://www.google.com/maps?q=Kaufland+Targu+Neamt&output=embed" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
     </div>
-    <div style={{textAlign: 'center', marginTop: '24px'}} className="reveal">
-      <a className="btn btn-primary magnetic" href="https://www.google.com/maps/search/?api=1&query=Kaufland+Targu+Neamt" target="_blank" rel="noopener noreferrer">Deschide în Google Maps</a>
+    <div className="reveal" style={{display: 'flex', gap: '14px', flexWrap: 'wrap', marginTop: '28px'}}>
+      <a className="btn btn-primary magnetic" href="/inregistrare">Creează cont</a>
+      <a className="btn btn-ghost magnetic" href="https://www.google.com/maps/search/?api=1&query=Kaufland+Targu+Neamt" target="_blank" rel="noopener noreferrer">Deschide în Google Maps</a>
     </div>
   </div>
 </section>
