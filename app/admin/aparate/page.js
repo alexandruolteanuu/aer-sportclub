@@ -48,7 +48,10 @@ export default function AdminAparate() {
 
   return (
     <>
-      <h1 className="dash-h1">Aparate</h1>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "12px", flexWrap: "wrap" }}>
+        <h1 className="dash-h1">Aparate</h1>
+        <Link href="/admin/aparate/coduri" className="btn btn-ghost">Coduri QR</Link>
+      </div>
       <p className="muted" style={{ fontSize: "14px", marginTop: "-6px" }}>
         Fiecare aparat primește propriul cod QR și propria listă de exerciții cu animații.
       </p>
